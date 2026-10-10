@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPA du Sud – Refuge de Saint-Pierre, La Réunion</title>
+<meta name="description" content="Adoptez, faites un don ou devenez bénévole : la SPA du Sud accueille chiens et chats abandonnés à Saint-Pierre, La Réunion.">
+<meta name="author" content="MAUME Robin – Geomark SIG Solutions">
+<meta name="theme-color" content="#0f6e7a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐾%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu</a>
+
+<header class="top">
+  <div class="wrap headbar">
+    <a class="brand" href="#accueil" aria-label="SPA du Sud – accueil"><span class="logo">🐾</span><span><b>SPA du Sud</b><small>Saint-Pierre · La Réunion</small></span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">☰</button>
+    <nav id="nav" aria-label="Navigation principale">
+      <a href="#accueil" data-tab="accueil">Accueil</a>
+      <a href="#animaux" data-tab="animaux">Nos animaux</a>
+      <a href="#adopter" data-tab="adopter">Adopter</a>
+      <a href="#dons" data-tab="dons">Faire un don</a>
+      <a href="#benevolat" data-tab="benevolat">Bénévolat</a>
+      <a href="#equipe" data-tab="equipe">L'équipe</a>
+      <a href="#fonctionnement" data-tab="fonctionnement">Fourrières &amp; refuges</a>
+      <a href="#contact" data-tab="contact">Contact</a>
+      <a href="#legal" data-tab="legal">Mentions légales</a>
+    </nav>
+    <button class="theme" id="theme" aria-label="Changer de thème">🌓</button>
+  </div>
+  <div class="ticker" aria-label="Chiffres clés">
+    <div class="wrap">
+      <span>🐕 <b data-count="66">0</b> places chiens</span>
+      <span>🐈 <b data-count="36">0</b> places chats</span>
+      <span>🏠 <b data-count="2433">0</b> adoptions 2018‑2022</span>
+      <span>❤️ <b data-count="6">0</b> façons d'aider</span>
+    </div>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ACCUEIL -->
+<section class="tab" id="accueil">
+  <div class="hero">
+    <div class="wrap hero-in">
+      <div>
+        <p class="kicker">Association loi 1901 · Refuge « Chance »</p>
+        <h1>Chaque chien et chaque chat mérite une seconde chance.</h1>
+        <p class="lead">Au bord de l'océan Indien, à Saint-Pierre, la SPA du Sud soigne, stérilise, socialise et fait adopter les animaux sortis de la fourrière.</p>
+        <div class="cta">
+          <a class="btn" href="#animaux">Voir les animaux</a>
+          <a class="btn alt" href="#dons">Faire un don</a>
+          <a class="btn ghost" href="#benevolat">Devenir bénévole</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="orbit"><span>🐕</span><span>🐈</span><span>🐾</span></div></div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <h2>Le refuge en chiffres</h2>
+    <div class="cards stats">
+      <div class="stat"><b data-count="102">0</b><span>places au refuge « Chance »</span></div>
+      <div class="stat"><b data-count="28">0</b><span>box pour chiens</span></div>
+      <div class="stat"><b data-count="45">0</b><span>chats et chatons en chatterie</span></div>
+      <div class="stat"><b data-count="2000">0</b><span>m² d'espace de jeux en bord de mer</span></div>
+    </div>
+    <p class="src">Sources : CIVIS (Le Centre Animalier), HelloAsso – SPA du Sud Réunion.</p>
+
+    <h2>Comment aider ?</h2>
+    <div class="cards three">
+      <a class="card link" href="#adopter"><span class="ico">🏠</span><h3>Adopter</h3><p>Un parcours simple en 5 étapes, avec conseils et accompagnement.</p></a>
+      <a class="card link" href="#dons"><span class="ico">💝</span><h3>Donner</h3><p>Nourriture, soins, stérilisations : chaque euro compte. Dons déductibles.</p></a>
+      <a class="card link" href="#benevolat"><span class="ico">🤝</span><h3>Se rendre utile</h3><p>Balades, bricolage, box, toilettage, câlins, communication.</p></a>
+    </div>
+
+    <h2>Parcours d'une adoption</h2>
+    <ol class="steps" id="steps-home"></ol>
+
+    <h2>Ils attendent une famille</h2>
+    <div class="grid animals" id="home-animals"></div>
+    <p class="center"><a class="btn" href="#animaux">Tous les portraits →</a></p>
+  </div>
+</section>
+
+<!-- ANIMAUX -->
+<section class="tab" id="animaux" hidden>
+  <div class="wrap">
+    <h1>Nos pensionnaires</h1>
+    <p class="note">ℹ️ Portraits à titre d'exemple : la liste réelle évolue chaque semaine. Contactez le refuge ou suivez la <a href="https://www.facebook.com/Spadusud/" target="_blank" rel="noopener">page Facebook</a> pour les animaux disponibles aujourd'hui.</p>
+    <div class="filters" role="group" aria-label="Filtres">
+      <label>Espèce <select id="f-esp"><option value="">Tous</option><option value="chien">Chiens</option><option value="chat">Chats</option></select></label>
+      <label>Taille <select id="f-taille"><option value="">Toutes</option><option value="S">Petit</option><option value="M">Moyen</option><option value="L">Grand</option></select></label>
+      <label>Énergie <select id="f-energie"><option value="">Toutes</option><option value="1">Calme</option><option value="2">Modérée</option><option value="3">Sportive</option></select></label>
+      <label class="chk"><input type="checkbox" id="f-enfants"> OK enfants</label>
+      <label class="chk"><input type="checkbox" id="f-chats"> Vit avec des chats</label>
+      <span class="count" id="f-count" aria-live="polite"></span>
+    </div>
+
+    <details class="quiz">
+      <summary>🎯 Quel compagnon est fait pour moi ? (mini-questionnaire)</summary>
+      <div class="quiz-in">
+        <label>Mon logement <select id="q-log"><option value="app">Appartement</option><option value="jardin">Maison avec jardin</option></select></label>
+        <label>Mon rythme <select id="q-rythme"><option value="1">Tranquille</option><option value="2">Équilibré</option><option value="3">Très actif / sportif</option></select></label>
+        <label>Enfants à la maison <select id="q-enf"><option value="non">Non</option><option value="oui">Oui</option></select></label>
+        <label>Autre animal <select id="q-autre"><option value="rien">Aucun</option><option value="chat">Un chat</option></select></label>
+        <button class="btn" id="q-go" type="button">Voir mes correspondances</button>
+      </div>
+    </details>
+
+    <div class="grid animals" id="all-animals"></div>
+  </div>
+</section>
+
+<!-- ADOPTER -->
+<section class="tab" id="adopter" hidden>
+  <div class="wrap">
+    <h1>Adopter un compagnon</h1>
+    <p class="lead dark">Adopter est un engagement de 10 à 20 ans. Voici tout ce qu'il faut savoir pour que l'histoire commence bien.</p>
+    <ol class="steps" id="steps-adopt"></ol>
+
+    <div class="two">
+      <div>
+        <h2>Avant d'adopter</h2>
+        <ul class="checks" id="checklist"></ul>
+        <div class="meter"><div class="bar"><i id="check-bar"></i></div><span id="check-txt">0 / 0 prêt·e</span></div>
+      </div>
+      <div>
+        <h2>Bon à savoir</h2>
+        <ul class="plain">
+          <li>Les animaux sont <b>identifiés, vaccinés et stérilisés</b> avant l'adoption (frais d'adoption demandés : à confirmer auprès du refuge).</li>
+          <li>Un <b>contrat d'adoption</b> est signé ; une visite ou un suivi peut être proposé.</li>
+          <li>Période d'adaptation : prévoir <b>3 jours, 3 semaines, 3 mois</b> pour que l'animal prenne ses repères.</li>
+          <li>Pensez au <b>contexte local</b> : chaleur, cyclones (rentrer l'animal), tiques et leptospirose, clôtures solides.</li>
+          <li>Impossible de garder l'animal ? <b>Rapportez-le au refuge</b>, jamais dans la nature.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>Formulaire de demande d'adoption</h2>
+    <form class="form" id="form-adopt" novalidate>
+      <fieldset><legend>Vous</legend>
+        <div class="row">
+          <label>Nom *<input name="nom" required autocomplete="family-name"></label>
+          <label>Prénom *<input name="prenom" required autocomplete="given-name"></label>
+        </div>
+        <div class="row">
+          <label>Email *<input type="email" name="email" required autocomplete="email"></label>
+          <label>Téléphone *<input type="tel" name="tel" required autocomplete="tel"></label>
+        </div>
+        <div class="row">
+          <label>Commune *<input name="commune" required autocomplete="address-level2"></label>
+          <label>Âge<input type="number" min="18" max="110" name="age"></label>
+        </div>
+      </fieldset>
+      <fieldset><legend>L'animal souhaité</legend>
+        <div class="row">
+          <label>Animal <select name="animal" id="adopt-animal"><option value="">Pas encore choisi / à conseiller</option></select></label>
+          <label>Espèce <select name="espece"><option>Chien</option><option>Chat</option><option>Peu importe</option></select></label>
+        </div>
+      </fieldset>
+      <fieldset><legend>Votre foyer</legend>
+        <div class="row">
+          <label>Logement <select name="logement"><option>Maison avec jardin clos</option><option>Maison sans clôture</option><option>Appartement</option><option>Autre</option></select></label>
+          <label>Statut <select name="statut"><option>Propriétaire</option><option>Locataire (accord du bailleur)</option><option>Hébergé</option></select></label>
+        </div>
+        <div class="row">
+          <label>Personnes au foyer (dont enfants et âges)<input name="foyer"></label>
+          <label>Autres animaux<input name="autres"></label>
+        </div>
+        <label>Combien d'heures l'animal sera-t-il seul par jour ?<input type="number" min="0" max="24" name="seul"></label>
+        <label>Expérience avec les animaux<textarea name="exp" rows="3"></textarea></label>
+        <label>Pourquoi souhaitez-vous adopter ?<textarea name="motivation" rows="3"></textarea></label>
+      </fieldset>
+      <label class="chk"><input type="checkbox" name="engage" required> Je m'engage à identifier, soigner et ne jamais abandonner l'animal. *</label>
+      <label class="chk"><input type="checkbox" name="rgpd" required> J'accepte que mes données soient utilisées pour traiter ma demande (<a href="#legal">voir confidentialité</a>). *</label>
+      <button class="btn" type="submit">Préparer ma demande</button>
+      <p class="hint">Votre messagerie s'ouvrira avec le message prêt à envoyer à la SPA du Sud. Aucune donnée n'est stockée par ce site.</p>
+      <p class="ok" id="ok-adopt" role="status" hidden></p>
+    </form>
+  </div>
+</section>
+
+<!-- DONS -->
+<section class="tab" id="dons" hidden>
+  <div class="wrap">
+    <h1>Faire un don</h1>
+    <p class="lead dark">La SPA du Sud vit grâce à la générosité du public : alimentation, vaccins, stérilisations, soins vétérinaires, travaux.</p>
+    <div class="two">
+      <form class="form" id="form-don" novalidate>
+        <fieldset><legend>Votre don</legend>
+          <div class="seg" role="radiogroup" aria-label="Fréquence">
+            <label><input type="radio" name="freq" value="ponctuel" checked><span>Une fois</span></label>
+            <label><input type="radio" name="freq" value="mensuel"><span>Chaque mois</span></label>
+          </div>
+          <div class="amounts" role="radiogroup" aria-label="Montant">
+            <button type="button" data-a="10">10 €</button>
+            <button type="button" data-a="20" class="on">20 €</button>
+            <button type="button" data-a="50">50 €</button>
+            <button type="button" data-a="100">100 €</button>
+            <label class="other">Autre <input type="number" min="1" step="1" id="don-other" placeholder="€"></label>
+          </div>
+          <p class="calc" id="don-calc" aria-live="polite"></p>
+        </fieldset>
+        <fieldset><legend>Vos coordonnées (pour le reçu fiscal)</legend>
+          <div class="row">
+            <label>Nom *<input name="nom" required autocomplete="family-name"></label>
+            <label>Prénom *<input name="prenom" required autocomplete="given-name"></label>
+          </div>
+          <label>Email *<input type="email" name="email" required autocomplete="email"></label>
+          <label>Adresse postale<input name="adresse" autocomplete="street-address"></label>
+          <label>Message (facultatif)<textarea name="msg" rows="2"></textarea></label>
+        </fieldset>
+        <label class="chk"><input type="checkbox" name="rgpd" required> J'accepte le traitement de mes données pour ce don (<a href="#legal">confidentialité</a>). *</label>
+        <div class="cta">
+          <a class="btn" id="don-pay" href="https://www.helloasso.com/associations/spa-du-sud-reunion" target="_blank" rel="noopener">Payer en ligne via HelloAsso ↗</a>
+          <button class="btn ghost" type="submit">Annoncer mon don par email</button>
+        </div>
+        <p class="hint">Le paiement sécurisé s'effectue sur HelloAsso : ce site ne collecte ni numéro de carte ni coordonnées bancaires.</p>
+        <p class="ok" id="ok-don" role="status" hidden></p>
+      </form>
+      <aside>
+        <h2>Où va votre argent ?</h2>
+        <p class="src">Exemples indicatifs (à remplacer par les coûts réels de l'association).</p>
+        <div class="impact">
+          <div><b>10 €</b><span>repas pour plusieurs chiens pendant une journée</span></div>
+          <div><b>50 €</b><span>vaccins et identification d'un animal</span></div>
+          <div><b>100 €</b><span>une participation à une stérilisation</span></div>
+        </div>
+        <h2>Autres façons de donner</h2>
+        <ul class="plain">
+          <li>🥫 <b>Dons en nature</b> : croquettes, litière, couvertures, laisses, jouets (appelez avant).</li>
+          <li>🧾 <b>Chèque</b> à l'ordre de « SPA du Sud », envoi au 199 chemin Charette, 97410 Saint-Pierre.</li>
+          <li>🏢 <b>Mécénat d'entreprise</b> et legs : contactez l'association.</li>
+          <li>📣 <b>Partagez</b> les annonces d'adoption sur les réseaux.</li>
+        </ul>
+        <p class="note">Association d'intérêt général : un reçu fiscal peut ouvrir droit à une réduction d'impôt (66 % dans le cas général en France, sous réserve d'éligibilité et plafonds). Confirmez avec l'association.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- BENEVOLAT -->
+<section class="tab" id="benevolat" hidden>
+  <div class="wrap">
+    <h1>Devenir bénévole</h1>
+    <p class="lead dark">Pas besoin d'expérience : juste un peu de temps, de la bonne humeur et l'amour des animaux.</p>
+    <div class="grid missions" id="missions"></div>
+
+    <h2>🗺️ Balades à pied depuis le refuge</h2>
+    <p>Deux itinéraires piétons au départ du refuge, calculés d'après les données OpenStreetMap. À vérifier sur place : tenue adaptée, eau, chien tenu en laisse.</p>
+    <div class="walk">
+      <div class="walk-ctl">
+        <button class="route on" data-r="pointe"><b>→ Pointe du Diable</b><span id="r-pointe"></span></button>
+        <button class="route" data-r="aeroport"><b>← Aéroport de Pierrefonds</b><span id="r-aeroport"></span></button>
+        <ul class="plain small">
+          <li>☀️ Sortez tôt le matin ou en fin de journée (sol chaud pour les pattes).</li>
+          <li>💧 Eau pour vous et pour le chien.</li>
+          <li>🧷 Laisse courte près des routes et du littoral.</li>
+          <li>🦴 Déposez-vous les déjections.</li>
+        </ul>
+      </div>
+      <div id="map-walk" class="map" role="img" aria-label="Carte des itinéraires de balade"></div>
+    </div>
+
+    <h2>Je m'inscris</h2>
+    <form class="form" id="form-benev" novalidate>
+      <div class="row">
+        <label>Nom *<input name="nom" required autocomplete="family-name"></label>
+        <label>Prénom *<input name="prenom" required autocomplete="given-name"></label>
+      </div>
+      <div class="row">
+        <label>Email *<input type="email" name="email" required autocomplete="email"></label>
+        <label>Téléphone<input type="tel" name="tel" autocomplete="tel"></label>
+      </div>
+      <fieldset><legend>Missions qui m'intéressent</legend>
+        <div class="tags" id="b-missions"></div>
+      </fieldset>
+      <div class="row">
+        <label>Disponibilités <select name="dispo"><option>Semaine matin</option><option>Semaine après-midi</option><option>Week-end</option><option>Variable</option></select></label>
+        <label>Je suis majeur·e <select name="majeur"><option>Oui</option><option>Non (autorisation parentale requise)</option></select></label>
+      </div>
+      <label>Un mot sur vous<textarea name="msg" rows="3"></textarea></label>
+      <label class="chk"><input type="checkbox" name="rgpd" required> J'accepte le traitement de mes données (<a href="#legal">confidentialité</a>). *</label>
+      <button class="btn" type="submit">Préparer mon inscription</button>
+      <p class="ok" id="ok-benev" role="status" hidden></p>
+    </form>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section class="tab" id="equipe" hidden>
+  <div class="wrap">
+    <h1>L'équipe</h1>
+    <p class="note">ℹ️ Postes présentés à titre de structure : renseignez les noms, photos et citations dans <code>js/data.js</code>.</p>
+    <div class="org" id="org" aria-label="Organigramme"></div>
+    <h2>Bénévoles par pôle</h2>
+    <div class="grid vols" id="vols"></div>
+  </div>
+</section>
+
+<!-- FONCTIONNEMENT -->
+<section class="tab" id="fonctionnement" hidden>
+  <div class="wrap">
+    <h1>Fourrières &amp; refuges : comment ça marche ?</h1>
+    <p class="lead dark">À La Réunion, la gestion des animaux errants est une compétence des communes, souvent déléguée aux intercommunalités (CIVIS, CASUD, TCO, CIREST, CINOR). Fourrière et refuge sont deux structures différentes.</p>
+
+    <div class="flow" id="flow">
+      <div class="node a"><b>1. Animal errant</b><span>capturé sur appel ou par ronde</span></div>
+      <div class="arrow">→</div>
+      <div class="node b"><b>2. Fourrière</b><span>garde légale + recherche du propriétaire</span></div>
+      <div class="arrow">→</div>
+      <div class="node g"><b>3a. Restitué</b><span>au propriétaire</span></div>
+      <div class="node g"><b>3b. Refuge</b><span>soins, stérilisation, adoption</span></div>
+      <div class="node r"><b>3c. Euthanasie</b><span>si aucune issue après le délai</span></div>
+    </div>
+
+    <h2>Le centre animalier de Saint-Pierre en chiffres</h2>
+    <div class="chart-wrap">
+      <div class="tabs-mini" id="years" role="tablist" aria-label="Année"></div>
+      <div id="chart" aria-live="polite"></div>
+      <p class="src">Source : CIVIS – Le Centre Animalier. Le nombre d'euthanasies n'est pas publié sur cette page : la part « ni restitués ni transférés » inclut donc les euthanasies et d'autres issues.</p>
+    </div>
+
+    <h2>Simulateur : et quand le refuge est plein ?</h2>
+    <div class="sim">
+      <label>Places libres au refuge : <b id="sim-val">20</b> / 102
+        <input type="range" id="sim" min="0" max="102" value="20" aria-describedby="sim-txt"></label>
+      <div class="gauge"><i id="sim-bar"></i></div>
+      <p id="sim-txt" role="status"></p>
+    </div>
+
+    <h2>Euthanasie : ce qu'il faut comprendre</h2>
+    <div class="two">
+      <div>
+        <p>Une fois le <b>délai de garde légal</b> écoulé (4 à 8 jours ouvrables selon les structures, par exemple 8 jours si l'animal est identifié et 4 sinon à la fourrière du TCO), un animal non réclamé peut être placé en refuge ou adopté. <b>Faute de place</b> et d'issue, il peut être euthanasié par un vétérinaire.</p>
+        <p>La fourrière a une capacité limitée (113 places à Saint-Pierre) : quand le refuge voisin est plein, les transferts ralentissent et la fourrière sature. Les stérilisations, l'identification (puce) et les adoptions sont donc les meilleurs leviers pour réduire ce triste dénouement.</p>
+      </div>
+      <div class="callout">
+        <h3>Ce que vous pouvez faire</h3>
+        <ul class="plain">
+          <li>🔖 <b>Identifier</b> et tatouer/pucer son animal.</li>
+          <li>✂️ <b>Stériliser</b> chiens et chats.</li>
+          <li>🏠 <b>Adopter</b> plutôt qu'acheter.</li>
+          <li>🧡 <b>Accueillir</b> temporairement ou <b>donner</b>.</li>
+        </ul>
+        <p><a class="btn" href="#adopter">Adopter</a></p>
+      </div>
+    </div>
+
+    <h2>Carte des refuges et fourrières</h2>
+    <div class="legend"><span><i class="dot both"></i> Refuge + fourrière</span><span><i class="dot refuge"></i> Refuge</span><span><i class="dot fourriere"></i> Fourrière</span></div>
+    <div id="map-island" class="map tall" role="img" aria-label="Carte des refuges et fourrières de La Réunion"></div>
+    <p class="src">Positions approximatives (géocodage OpenStreetMap, guide préfectoral 2020, sites CIVIS/TCO) : vérifiez avant de vous déplacer. Liste non exhaustive : d'autres associations accueillent des animaux sur l'île.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="tab" id="contact" hidden>
+  <div class="wrap">
+    <h1>Contact &amp; accès</h1>
+    <div class="two">
+      <div>
+        <ul class="contact">
+          <li><span>📍</span><div><b>Adresse</b><br>199 chemin Charette<br>97410 Saint-Pierre – La Réunion</div></li>
+          <li><span>📞</span><div><b>Refuge</b><br><a href="tel:+262262259817">02 62 25 98 17</a></div></li>
+          <li><span>🚨</span><div><b>Fourrière</b> (animal trouvé/perdu)<br><a href="tel:+262262352558">02 62 35 25 58</a> · captures <a href="tel:0800501501">0800 501 501</a></div></li>
+          <li><span>✉️</span><div><b>Email</b><br><a href="mailto:spa.dusud@gmail.com">spa.dusud@gmail.com</a></div></li>
+          <li><span>📘</span><div><b>Facebook</b><br><a href="https://www.facebook.com/Spadusud/" target="_blank" rel="noopener">SPA du Sud Réunion</a></div></li>
+          <li><span>🕒</span><div><b>Horaires</b><br>Les annuaires divergent (ex. 8 h–12 h et 14 h–17 h) : <i>appelez avant de venir</i>.</div></li>
+        </ul>
+        <div class="cta">
+          <a class="btn" id="go-osm" target="_blank" rel="noopener" href="https://www.openstreetmap.org/directions?to=-21.32027%2C55.43926">Itinéraire ↗</a>
+          <a class="btn ghost" target="_blank" rel="noopener" href="https://waze.com/ul?ll=-21.32027,55.43926&navigate=yes">Waze ↗</a>
+        </div>
+      </div>
+      <div id="map-contact" class="map" role="img" aria-label="Plan d'accès au refuge"></div>
+    </div>
+
+    <h2>Nous écrire</h2>
+    <form class="form" id="form-contact" novalidate>
+      <div class="row">
+        <label>Nom *<input name="nom" required autocomplete="name"></label>
+        <label>Email *<input type="email" name="email" required autocomplete="email"></label>
+      </div>
+      <label>Sujet <select name="sujet"><option>Question générale</option><option>Adoption</option><option>Don</option><option>Bénévolat</option><option>Animal trouvé</option><option>Presse</option></select></label>
+      <label>Message *<textarea name="msg" rows="4" required></textarea></label>
+      <label class="chk"><input type="checkbox" name="rgpd" required> J'accepte le traitement de mes données (<a href="#legal">confidentialité</a>). *</label>
+      <button class="btn" type="submit">Préparer mon message</button>
+      <p class="ok" id="ok-contact" role="status" hidden></p>
+    </form>
+  </div>
+</section>
+
+<!-- LEGAL -->
+<section class="tab" id="legal" hidden>
+  <div class="wrap prose">
+    <h1>Mentions légales &amp; licences</h1>
+
+    <h2>Éditeur du site</h2>
+    <p>SPA du Sud de l'Île de La Réunion, association déclarée (loi du 1<sup>er</sup> juillet 1901), 199 chemin Charette, 97410 Saint-Pierre – <a href="mailto:spa.dusud@gmail.com">spa.dusud@gmail.com</a> – 02 62 25 98 17.<br>
+    Directeur·rice de la publication : <i>à compléter (présidente de l'association)</i>. N° RNA / SIRET : <i>à compléter</i>.</p>
+
+    <h2>Conception et réalisation</h2>
+    <p>Site conçu et réalisé par <b>MAUME Robin – Geomark SIG Solutions</b>. Dépôt source : <a href="https://github.com/GeomarkSIG/SPA_du_SUD" target="_blank" rel="noopener">github.com/GeomarkSIG/SPA_du_SUD</a>.</p>
+
+    <h2>Hébergement</h2>
+    <p><i>À compléter</i> (nom, adresse et contact de l'hébergeur, obligatoire – art. 6 LCEN).</p>
+
+    <h2>Licences</h2>
+    <table class="lic">
+      <thead><tr><th>Élément</th><th>Licence</th></tr></thead>
+      <tbody>
+        <tr><td>Code source du site (HTML, CSS, JavaScript)</td><td><b>MIT</b> © 2026 MAUME Robin – Geomark SIG Solutions (fichier <code>LICENSE</code>)</td></tr>
+        <tr><td>Textes rédigés pour le site et infographies</td><td><b>CC BY-NC-SA 4.0</b> – <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" target="_blank" rel="noopener">texte</a> (fichier <code>LICENSE-CONTENT.md</code>)</td></tr>
+        <tr><td>Nom, logo, photos et portraits de la SPA du Sud</td><td><b>Tous droits réservés</b> – propriété de l'association ou de leurs auteurs, non couverts par les licences ci-dessus</td></tr>
+        <tr><td>Fond de carte et itinéraires</td><td><b>ODbL 1.0</b> – © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">contributeurs OpenStreetMap</a> ; fond de carte © <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a> (repli : OSM) ; itinéraires piétons : routing.openstreetmap.de</td></tr>
+        <tr><td>Bibliothèque cartographique Leaflet 1.9.4</td><td><b>BSD 2‑Clause</b> © Vladimir Agafonkin, CloudMade</td></tr>
+        <tr><td>Chiffres du centre animalier</td><td>Données publiques CIVIS, TCO, DAAF Réunion (guide aux maires 2020), citées avec leur source</td></tr>
+        <tr><td>Icônes emoji</td><td>Emoji natifs du système de l'utilisateur</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Données personnelles (RGPD)</h2>
+    <p>Les formulaires de ce site ne sont pas transmis à un serveur : ils préparent un email dans <i>votre</i> messagerie, que vous envoyez vous‑même à la SPA du Sud. Les données saisies servent uniquement à traiter votre demande (adoption, don, bénévolat, contact) et sont conservées par l'association le temps nécessaire. Conformément au RGPD et à la loi « Informatique et Libertés », vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de limitation, à exercer auprès de <a href="mailto:spa.dusud@gmail.com">spa.dusud@gmail.com</a> ; réclamation possible auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a>. Les paiements sont traités par <a href="https://www.helloasso.com" target="_blank" rel="noopener">HelloAsso</a> selon sa propre politique.</p>
+
+    <h2>Cookies et traceurs</h2>
+    <p>Ce site n'utilise <b>aucun cookie</b> ni outil de mesure d'audience. Seule votre préférence de thème clair/sombre est mémorisée localement dans votre navigateur (stockage local, sans transmission). Les tuiles de carte sont chargées depuis les serveurs d'Esri (ou d'OpenStreetMap en repli) et la bibliothèque Leaflet depuis cdnjs.cloudflare.com, qui reçoivent donc votre adresse IP.</p>
+
+    <h2>Propriété intellectuelle</h2>
+    <p>Sauf mention contraire, la reproduction des éléments « tous droits réservés » est interdite sans autorisation écrite de la SPA du Sud. Le droit à l'image des personnes et des animaux est respecté ; toute personne identifiable peut demander le retrait d'une photo.</p>
+
+    <h2>Responsabilité</h2>
+    <p>Les informations (horaires, tarifs, coordonnées des fourrières, positions sur la carte, durées de balade) sont données à titre indicatif, issues de sources publiques, et peuvent évoluer : vérifiez-les auprès de la structure concernée. Les profils d'animaux et de personnes présentés comme « exemples » sont illustratifs. Les balades sont effectuées sous la responsabilité des bénévoles. Les liens externes n'engagent pas la SPA du Sud.</p>
+
+    <h2>Accessibilité</h2>
+    <p>Le site vise le référentiel RGAA / WCAG 2.1 AA (navigation clavier, contrastes, lien d'évitement, thème sombre, <code>prefers-reduced-motion</code>). Aucun audit officiel n'a encore été réalisé. Signalez toute difficulté à <a href="mailto:spa.dusud@gmail.com">spa.dusud@gmail.com</a>.</p>
+
+    <h2>Droit applicable</h2>
+    <p>Droit français. Tribunaux compétents : ceux du ressort de Saint-Pierre (La Réunion).</p>
+
+    <p class="src">Dernière mise à jour : octobre 2026.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div><b>🐾 SPA du Sud</b><br>199 chemin Charette · 97410 Saint-Pierre<br>02 62 25 98 17</div>
+    <div><a href="#adopter">Adopter</a> · <a href="#dons">Donner</a> · <a href="#benevolat">Bénévolat</a> · <a href="#contact">Contact</a> · <a href="#legal">Mentions légales</a></div>
+    <div class="credit">Site conçu et réalisé par <b>MAUME Robin – Geomark SIG Solutions</b><br>
+      Code <a href="https://github.com/GeomarkSIG/SPA_du_SUD" target="_blank" rel="noopener">MIT</a> · Textes CC BY‑NC‑SA 4.0 · Cartes © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a></div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
