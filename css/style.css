@@ -148,7 +148,7 @@ input:invalid.touched,textarea:invalid.touched{border-color:var(--red)}
 .amounts button.on{border-color:var(--coral);background:color-mix(in srgb,var(--coral) 16%,var(--bg))}
 .amounts .other{display:flex;align-items:center;gap:6px;margin:0}.amounts .other input{width:90px}
 .seg{display:inline-flex;border:2px solid var(--line);border-radius:999px;overflow:hidden}
-.seg label{margin:0}.seg input{position:absolute;opacity:0}
+.seg label{margin:0;position:relative}.seg input{position:absolute;opacity:0;width:1px;height:1px}
 .seg span{display:block;padding:8px 18px;cursor:pointer;color:var(--ink)}
 .seg input:checked+span{background:var(--teal);color:#fff}
 .seg input:focus-visible+span{outline:3px solid var(--sun)}
@@ -249,3 +249,47 @@ footer a{color:#9fe5ec}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 @media print{.top,footer,.cta{display:none}}
+
+/* ===== Mobile ===== */
+.lic{display:block;overflow-x:auto}
+@media(max-width:600px){
+  body{font-size:15.5px}
+  .wrap{padding:0 16px}
+  .headbar{min-height:58px;gap:8px}
+  .brand .logo{width:38px;height:38px;font-size:1.5rem}
+  .brand small{display:none}
+  .burger,.theme{min-width:44px;min-height:44px}
+  nav a{padding:12px 14px;font-size:1rem}
+  .ticker .wrap{gap:16px;font-size:.8rem}
+  .hero{padding:34px 0 56px}
+  .lead{font-size:1.02rem}
+  .cta{flex-direction:column}
+  .cta .btn{text-align:center;width:100%}
+  .btn{padding:13px 20px}
+  h2{font-size:1.3rem}
+  .cards.stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat{padding:14px}.stat b{font-size:2rem}.stat span{font-size:.85rem}
+  .steps{grid-template-columns:1fr}
+  .grid.animals,.grid.missions,.grid.vols{grid-template-columns:1fr}
+  .filters{display:grid;grid-template-columns:1fr 1fr}
+  .filters .count{grid-column:1/-1;margin:0}
+  .quiz-in{display:grid;grid-template-columns:1fr 1fr}
+  .quiz-in .btn{grid-column:1/-1}
+  .form{padding:14px}
+  .form input,.form select,.form textarea,select,input,textarea{font-size:16px;min-height:44px}
+  .chk input,.checks input,.tags input{min-height:0;width:20px;height:20px}
+  .amounts button{flex:1 1 40%;min-height:46px}
+  .amounts .other{flex:1 1 100%}.amounts .other input{width:100%}
+  .seg{display:flex}.seg label{flex:1;text-align:center}
+  .map{height:320px}.map.tall{height:430px}
+  .walk{gap:14px}
+  .person{width:100%;max-width:340px}
+  .org .lvl{flex-direction:column;align-items:center}
+  .flow .arrow{display:none}
+  .flow .node{flex:1 1 100%}
+  .hbar{grid-template-columns:96px 1fr 48px;gap:6px;font-size:.78rem}
+  .contact li{gap:10px}
+  .foot{gap:14px}
+  .lic th,.lic td{padding:6px;font-size:.85rem}
+}
+@media(max-width:380px){.cards.stats{grid-template-columns:1fr}.filters,.quiz-in{grid-template-columns:1fr}}
