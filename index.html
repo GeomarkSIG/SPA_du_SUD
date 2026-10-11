@@ -7,17 +7,22 @@
 <meta name="description" content="Adoptez, faites un don ou devenez bénévole : la SPA du Sud accueille chiens et chats abandonnés à Saint-Pierre, La Réunion.">
 <meta name="author" content="MAUME Robin – Geomark SIG Solutions">
 <meta name="theme-color" content="#0f6e7a">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐾%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="css/style.css?v=2">
+<link rel="icon" type="image/jpeg" href="img/logo-spa-sud.jpg">
+<meta property="og:title" content="SPA du Sud – Refuge de Saint-Pierre, La Réunion">
+<meta property="og:description" content="Adoptez, donnez, devenez bénévole : une seconde chance pour chaque chien et chaque chat.">
+<meta property="og:image" content="img/pointe-1.jpg">
+<meta property="og:locale" content="fr_FR">
+<link rel="stylesheet" href="css/vendor/leaflet.css">
+<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/v3.css?v=5">
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
 
 <header class="top">
   <div class="wrap headbar">
-    <a class="brand" href="#accueil" aria-label="SPA du Sud – accueil"><span class="logo">🐾</span><span><b>SPA du Sud</b><small>Saint-Pierre · La Réunion</small></span></a>
-    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">☰</button>
+    <a class="brand" href="#accueil" aria-label="SPA du Sud – accueil"><img class="logo" src="img/logo-spa-sud.jpg" alt="" width="44" height="44"><span><b>SPA du Sud</b><small>Saint-Pierre · La Réunion</small></span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><i class="i" data-i="menu"></i></button>
     <nav id="nav" aria-label="Navigation principale">
       <a href="#accueil" data-tab="accueil">Accueil</a>
       <a href="#animaux" data-tab="animaux">Nos animaux</a>
@@ -29,14 +34,15 @@
       <a href="#contact" data-tab="contact">Contact</a>
       <a href="#legal" data-tab="legal">Mentions légales</a>
     </nav>
-    <button class="theme" id="theme" aria-label="Changer de thème">🌓</button>
+    <button class="fav-btn" id="fav-btn" aria-label="Mes animaux favoris"><i class="i" data-i="heart"></i><b id="fav-n">0</b></button>
+    <button class="theme" id="theme" aria-label="Changer de thème"><i class="i" data-i="moon"></i></button>
   </div>
   <div class="ticker" aria-label="Chiffres clés">
     <div class="wrap">
-      <span>🐕 <b data-count="66">0</b> places chiens</span>
-      <span>🐈 <b data-count="36">0</b> places chats</span>
-      <span>🏠 <b data-count="2433">0</b> adoptions 2018‑2022</span>
-      <span>❤️ <b data-count="6">0</b> façons d'aider</span>
+      <span><i class="i" data-i="dog"></i> <b data-count="66">0</b> places chiens</span>
+      <span><i class="i" data-i="cat"></i> <b data-count="36">0</b> places chats</span>
+      <span><i class="i" data-i="home"></i> <b data-count="2433">0</b> adoptions 2018‑2022</span>
+      <span><i class="i beat" data-i="heart"></i> <b data-count="6">0</b> façons d'aider</span>
     </div>
   </div>
 </header>
@@ -45,45 +51,59 @@
 
 <!-- ACCUEIL -->
 <section class="tab" id="accueil">
-  <div class="hero">
-    <div class="wrap hero-in">
-      <div>
-        <p class="kicker">Association loi 1901 · Refuge « Chance »</p>
-        <h1>Chaque chien et chaque chat mérite une seconde chance.</h1>
-        <p class="lead">Au bord de l'océan Indien, à Saint-Pierre, la SPA du Sud soigne, stérilise, socialise et fait adopter les animaux sortis de la fourrière.</p>
+  <div class="hero" id="hero">
+    <div class="hero-bg" role="img" aria-label="Le littoral de Saint-Pierre à la Pointe du Diable, à proximité du refuge"></div>
+    <div class="hero-shade"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <img class="medal" src="img/logo-spa-sud.jpg" alt="Logo de la Société Protectrice des Animaux du Sud" width="120" height="120">
+        <p class="kicker"><i class="i" data-i="waves"></i> Saint-Pierre · La Réunion · au bord de l'océan Indien</p>
+        <h1>Chaque chien et chaque chat mérite <span class="hl">une seconde chance.</span></h1>
+        <p class="lead">Le refuge « Chance » de la SPA du Sud soigne, stérilise, socialise et fait adopter les animaux sortis de la fourrière.</p>
         <div class="cta">
-          <a class="btn" href="#animaux">Voir les animaux</a>
-          <a class="btn alt" href="#dons">Faire un don</a>
-          <a class="btn ghost" href="#benevolat">Devenir bénévole</a>
+          <a class="btn" href="#animaux"><i class="i" data-i="paw"></i> Voir les animaux</a>
+          <a class="btn alt" href="#dons"><i class="i beat" data-i="heart"></i> Faire un don</a>
+          <a class="btn ghost" href="#benevolat"><i class="i" data-i="walk"></i> Devenir bénévole</a>
         </div>
       </div>
-      <div class="hero-art" aria-hidden="true"><div class="orbit"><span>🐕</span><span>🐈</span><span>🐾</span></div></div>
+      <aside class="spot" id="spot" aria-live="polite" aria-label="Animal à la une"></aside>
     </div>
+    <a class="scroll-cue" href="#live" data-scroll aria-label="Descendre"><i class="i" data-i="arrow-down"></i></a>
+    <p class="photo-credit">Photo : Clémenceau Lauret, <a href="https://commons.wikimedia.org/wiki/File:Pointe_du_Diable_-_Saint-Pierre_-_La_Reunion.jpg" target="_blank" rel="noopener">CC BY-SA 3.0</a></p>
   </div>
 
-  <div class="wrap">
-    <h2>Le refuge en chiffres</h2>
-    <div class="cards stats">
-      <div class="stat"><b data-count="102">0</b><span>places au refuge « Chance »</span></div>
-      <div class="stat"><b data-count="28">0</b><span>box pour chiens</span></div>
-      <div class="stat"><b data-count="45">0</b><span>chats et chatons en chatterie</span></div>
-      <div class="stat"><b data-count="2000">0</b><span>m² d'espace de jeux en bord de mer</span></div>
-    </div>
+  <div class="wrap" id="live">
+    <h2 class="sec"><i class="i" data-i="info"></i> Le refuge en chiffres <small>touchez une carte pour en savoir plus</small></h2>
+    <div class="tiles" id="tiles"></div>
     <p class="src">Sources : CIVIS (Le Centre Animalier), HelloAsso – SPA du Sud Réunion.</p>
 
-    <h2>Comment aider ?</h2>
+    <h2 class="sec"><i class="i" data-i="heart"></i> Comment aider ?</h2>
     <div class="cards three">
-      <a class="card link" href="#adopter"><span class="ico">🏠</span><h3>Adopter</h3><p>Un parcours simple en 5 étapes, avec conseils et accompagnement.</p></a>
-      <a class="card link" href="#dons"><span class="ico">💝</span><h3>Donner</h3><p>Nourriture, soins, stérilisations : chaque euro compte. Dons déductibles.</p></a>
-      <a class="card link" href="#benevolat"><span class="ico">🤝</span><h3>Se rendre utile</h3><p>Balades, bricolage, box, toilettage, câlins, communication.</p></a>
+      <a class="card link act" href="#adopter"><span class="ico big"><i class="i" data-i="home"></i></span><h3>Adopter</h3><p>Un parcours simple en 5 étapes, avec conseils et accompagnement.</p><span class="more">Je veux adopter <i class="i" data-i="arrow"></i></span></a>
+      <a class="card link act" href="#dons"><span class="ico big"><i class="i beat" data-i="heart"></i></span><h3>Donner</h3><p>Nourriture, soins, stérilisations : chaque euro compte. Dons déductibles.</p><span class="more">Je fais un don <i class="i" data-i="arrow"></i></span></a>
+      <a class="card link act" href="#benevolat"><span class="ico big"><i class="i" data-i="users"></i></span><h3>Se rendre utile</h3><p>Balades, bricolage, box, toilettage, câlins, communication.</p><span class="more">Je m'inscris <i class="i" data-i="arrow"></i></span></a>
     </div>
 
-    <h2>Parcours d'une adoption</h2>
-    <ol class="steps" id="steps-home"></ol>
+    <h2 class="sec"><i class="i" data-i="dog"></i> Ils attendent une famille
+      <span class="car-btns"><button class="round" id="car-prev" aria-label="Précédents"><i class="i" data-i="arrow" style="transform:scaleX(-1)"></i></button><button class="round" id="car-next" aria-label="Suivants"><i class="i" data-i="arrow"></i></button></span></h2>
+    <div class="carousel" id="home-animals" tabindex="0" aria-label="Animaux à adopter"></div>
+    <p class="center"><a class="btn" href="#animaux">Tous les portraits <i class="i" data-i="arrow"></i></a></p>
 
-    <h2>Ils attendent une famille</h2>
-    <div class="grid animals" id="home-animals"></div>
-    <p class="center"><a class="btn" href="#animaux">Tous les portraits →</a></p>
+    <h2 class="sec"><i class="i" data-i="route"></i> Adopter en 5 étapes</h2>
+    <div class="stepper" id="stepper">
+      <div class="stepper-nav" role="tablist" aria-label="Étapes d'adoption"></div>
+      <div class="stepper-body" role="tabpanel" aria-live="polite"></div>
+    </div>
+
+    <div class="teaser">
+      <div class="teaser-pic" role="img" aria-label="Le littoral de la Pointe du Diable"></div>
+      <div class="teaser-txt">
+        <h2><i class="i" data-i="waves"></i> Une balade jusqu'à la mer</h2>
+        <p>Le refuge est à quelques centaines de mètres du littoral. Les bénévoles promènent les chiens vers la <b>plage de la Pointe du Diable</b> (2,5 km) ou le long de la clôture de l'aéroport de Pierrefonds (1,8 km).</p>
+        <a class="btn" href="#benevolat" data-go="walk"><i class="i" data-i="route"></i> Voir les itinéraires</a>
+        <p class="src">Photo : B.navez, <a href="https://commons.wikimedia.org/wiki/File:Reunion_SaintPierre_PointeDuDiable.JPG" target="_blank" rel="noopener">CC BY-SA 3.0</a></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -91,7 +111,7 @@
 <section class="tab" id="animaux" hidden>
   <div class="wrap">
     <h1>Nos pensionnaires</h1>
-    <p class="note">ℹ️ Portraits à titre d'exemple : la liste réelle évolue chaque semaine. Contactez le refuge ou suivez la <a href="https://www.facebook.com/Spadusud/" target="_blank" rel="noopener">page Facebook</a> pour les animaux disponibles aujourd'hui.</p>
+    <p class="note"><i class="i" data-i="info"></i> Portraits à titre d'exemple : la liste réelle évolue chaque semaine. Contactez le refuge ou suivez la <a href="https://www.facebook.com/Spadusud/" target="_blank" rel="noopener">page Facebook</a> pour les animaux disponibles aujourd'hui.</p>
     <div class="filters" role="group" aria-label="Filtres">
       <label>Espèce <select id="f-esp"><option value="">Tous</option><option value="chien">Chiens</option><option value="chat">Chats</option></select></label>
       <label>Taille <select id="f-taille"><option value="">Toutes</option><option value="S">Petit</option><option value="M">Moyen</option><option value="L">Grand</option></select></label>
@@ -102,7 +122,7 @@
     </div>
 
     <details class="quiz">
-      <summary>🎯 Quel compagnon est fait pour moi ? (mini-questionnaire)</summary>
+      <summary><i class="i" data-i="target"></i> Quel compagnon est fait pour moi ? (mini-questionnaire)</summary>
       <div class="quiz-in">
         <label>Mon logement <select id="q-log"><option value="app">Appartement</option><option value="jardin">Maison avec jardin</option></select></label>
         <label>Mon rythme <select id="q-rythme"><option value="1">Tranquille</option><option value="2">Équilibré</option><option value="3">Très actif / sportif</option></select></label>
@@ -233,10 +253,10 @@
         </div>
         <h2>Autres façons de donner</h2>
         <ul class="plain">
-          <li>🥫 <b>Dons en nature</b> : croquettes, litière, couvertures, laisses, jouets (appelez avant).</li>
-          <li>🧾 <b>Chèque</b> à l'ordre de « SPA du Sud », envoi au 199 chemin Charette, 97410 Saint-Pierre.</li>
-          <li>🏢 <b>Mécénat d'entreprise</b> et legs : contactez l'association.</li>
-          <li>📣 <b>Partagez</b> les annonces d'adoption sur les réseaux.</li>
+          <li><i class="i" data-i="box"></i> <b>Dons en nature</b> : croquettes, litière, couvertures, laisses, jouets (appelez avant).</li>
+          <li><i class="i" data-i="mail"></i> <b>Chèque</b> à l'ordre de « SPA du Sud », envoi au 199 chemin Charette, 97410 Saint-Pierre.</li>
+          <li><i class="i" data-i="building"></i> <b>Mécénat d'entreprise</b> et legs : contactez l'association.</li>
+          <li><i class="i" data-i="megaphone"></i> <b>Partagez</b> les annonces d'adoption sur les réseaux.</li>
         </ul>
         <p class="note">Association d'intérêt général : un reçu fiscal peut ouvrir droit à une réduction d'impôt (66 % dans le cas général en France, sous réserve d'éligibilité et plafonds). Confirmez avec l'association.</p>
       </aside>
@@ -251,21 +271,24 @@
     <p class="lead dark">Pas besoin d'expérience : juste un peu de temps, de la bonne humeur et l'amour des animaux.</p>
     <div class="grid missions" id="missions"></div>
 
-    <h2>🗺️ Balades à pied depuis le refuge</h2>
-    <p>Deux itinéraires piétons au départ du refuge, calculés d'après les données OpenStreetMap. À vérifier sur place : tenue adaptée, eau, chien tenu en laisse.</p>
+    <h2 class="sec"><i class="i" data-i="route"></i> Balades à pied depuis le refuge</h2>
+    <p>Deux itinéraires <b>le long du littoral</b>, calculés d'après les chemins OpenStreetMap. Ils ne traversent pas l'aéroport : l'un mène à la <b>plage de la Pointe du Diable</b>, l'autre <b>longe la clôture de l'aéroport de Pierrefonds</b> côté mer.</p>
     <div class="walk">
       <div class="walk-ctl">
-        <button class="route on" data-r="pointe"><b>→ Pointe du Diable</b><span id="r-pointe"></span></button>
-        <button class="route" data-r="aeroport"><b>← Aéroport de Pierrefonds</b><span id="r-aeroport"></span></button>
-        <ul class="plain small">
-          <li>☀️ Sortez tôt le matin ou en fin de journée (sol chaud pour les pattes).</li>
-          <li>💧 Eau pour vous et pour le chien.</li>
-          <li>🧷 Laisse courte près des routes et du littoral.</li>
-          <li>🦴 Déposez-vous les déjections.</li>
+        <button class="route on" data-r="pointe"><span class="rt-ico"><i class="i" data-i="waves"></i></span><span><b>→ Plage de la Pointe du Diable</b><span id="r-pointe"></span></span></button>
+        <button class="route" data-r="aeroport"><span class="rt-ico"><i class="i" data-i="plane"></i></span><span><b>← Clôture de l'aéroport (littoral)</b><span id="r-aeroport"></span></span></button>
+        <button class="btn" id="walk-play" type="button"><i class="i" data-i="walk"></i> Simuler la balade</button>
+        <ul class="plain small icons">
+          <li><i class="i" data-i="sun"></i> Sortez tôt le matin ou en fin de journée (sol chaud pour les pattes).</li>
+          <li><i class="i" data-i="drop"></i> Eau pour vous et pour le chien.</li>
+          <li><i class="i" data-i="link"></i> Laisse courte près des routes et du littoral.</li>
+          <li><i class="i" data-i="trash"></i> Déposez-vous les déjections.</li>
+          <li><i class="i" data-i="info"></i> Falaises et houle : ne descendez pas sur les rochers avec un chien.</li>
         </ul>
       </div>
-      <div id="map-walk" class="map" role="img" aria-label="Carte des itinéraires de balade"></div>
+      <div class="map-wrap"><div id="map-walk" class="map" role="img" aria-label="Carte des itinéraires de balade"></div><div class="map-hud" id="walk-hud" aria-live="polite"></div></div>
     </div>
+    <p class="src">Départ : bout du chemin Charette (position approximative du refuge). Tracés indicatifs, à reconnaître sur place avant d'y emmener un chien.</p>
 
     <h2>Je m'inscris</h2>
     <form class="form" id="form-benev" novalidate>
@@ -296,7 +319,7 @@
 <section class="tab" id="equipe" hidden>
   <div class="wrap">
     <h1>L'équipe</h1>
-    <p class="note">ℹ️ Postes présentés à titre de structure : renseignez les noms, photos et citations dans <code>js/data.js</code>.</p>
+    <p class="note"><i class="i" data-i="info"></i> Postes présentés à titre de structure : renseignez les noms, photos et citations dans <code>js/data.js</code>.</p>
     <div class="org" id="org" aria-label="Organigramme"></div>
     <h2>Bénévoles par pôle</h2>
     <div class="grid vols" id="vols"></div>
@@ -343,10 +366,10 @@
       <div class="callout">
         <h3>Ce que vous pouvez faire</h3>
         <ul class="plain">
-          <li>🔖 <b>Identifier</b> et tatouer/pucer son animal.</li>
-          <li>✂️ <b>Stériliser</b> chiens et chats.</li>
-          <li>🏠 <b>Adopter</b> plutôt qu'acheter.</li>
-          <li>🧡 <b>Accueillir</b> temporairement ou <b>donner</b>.</li>
+          <li><i class="i" data-i="shield"></i> <b>Identifier</b> et tatouer/pucer son animal.</li>
+          <li><i class="i" data-i="scissors"></i> <b>Stériliser</b> chiens et chats.</li>
+          <li><i class="i" data-i="home"></i> <b>Adopter</b> plutôt qu'acheter.</li>
+          <li><i class="i" data-i="heart"></i> <b>Accueillir</b> temporairement ou <b>donner</b>.</li>
         </ul>
         <p><a class="btn" href="#adopter">Adopter</a></p>
       </div>
@@ -366,12 +389,12 @@
     <div class="two">
       <div>
         <ul class="contact">
-          <li><span>📍</span><div><b>Adresse</b><br>199 chemin Charette<br>97410 Saint-Pierre – La Réunion</div></li>
-          <li><span>📞</span><div><b>Refuge</b><br><a href="tel:+262262259817">02 62 25 98 17</a></div></li>
-          <li><span>🚨</span><div><b>Fourrière</b> (animal trouvé/perdu)<br><a href="tel:+262262352558">02 62 35 25 58</a> · captures <a href="tel:0800501501">0800 501 501</a></div></li>
-          <li><span>✉️</span><div><b>Email</b><br><a href="mailto:spa.dusud@gmail.com">spa.dusud@gmail.com</a></div></li>
-          <li><span>📘</span><div><b>Facebook</b><br><a href="https://www.facebook.com/Spadusud/" target="_blank" rel="noopener">SPA du Sud Réunion</a></div></li>
-          <li><span>🕒</span><div><b>Horaires</b><br>Les annuaires divergent (ex. 8 h–12 h et 14 h–17 h) : <i>appelez avant de venir</i>.</div></li>
+          <li><span class="ico"><i class="i" data-i="pin"></i></span><div><b>Adresse</b><br>199 chemin Charette<br>97410 Saint-Pierre – La Réunion</div></li>
+          <li><span class="ico"><i class="i" data-i="phone"></i></span><div><b>Refuge</b><br><a href="tel:+262262259817">02 62 25 98 17</a></div></li>
+          <li><span class="ico"><i class="i" data-i="alert"></i></span><div><b>Fourrière</b> (animal trouvé/perdu)<br><a href="tel:+262262352558">02 62 35 25 58</a> · captures <a href="tel:0800501501">0800 501 501</a></div></li>
+          <li><span class="ico"><i class="i" data-i="mail"></i></span><div><b>Email</b><br><a href="mailto:spa.dusud@gmail.com">spa.dusud@gmail.com</a></div></li>
+          <li><span class="ico"><i class="i" data-i="facebook"></i></span><div><b>Facebook</b><br><a href="https://www.facebook.com/Spadusud/" target="_blank" rel="noopener">SPA du Sud Réunion</a></div></li>
+          <li><span class="ico"><i class="i" data-i="clock"></i></span><div><b>Horaires</b><br>Les annuaires divergent (ex. 8 h–12 h et 14 h–17 h) : <i>appelez avant de venir</i>.</div></li>
         </ul>
         <div class="cta">
           <a class="btn" id="go-osm" target="_blank" rel="noopener" href="https://www.openstreetmap.org/directions?to=-21.32027%2C55.43926">Itinéraire ↗</a>
@@ -419,7 +442,9 @@
         <tr><td>Textes rédigés pour le site et infographies</td><td><b>CC BY-NC-SA 4.0</b> – <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr" target="_blank" rel="noopener">texte</a> (fichier <code>LICENSE-CONTENT.md</code>)</td></tr>
         <tr><td>Nom, logo, photos et portraits de la SPA du Sud</td><td><b>Tous droits réservés</b> – propriété de l'association ou de leurs auteurs, non couverts par les licences ci-dessus</td></tr>
         <tr><td>Fond de carte et itinéraires</td><td><b>ODbL 1.0</b> – © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">contributeurs OpenStreetMap</a> ; fond de carte © <a href="https://www.esri.com" target="_blank" rel="noopener">Esri</a> (repli : OSM) ; itinéraires piétons : routing.openstreetmap.de</td></tr>
-        <tr><td>Bibliothèque cartographique Leaflet 1.9.4</td><td><b>BSD 2‑Clause</b> © Vladimir Agafonkin, CloudMade</td></tr>
+        <tr><td>Photos du littoral (Pointe du Diable)</td><td><b>CC BY-SA 3.0</b> – « Pointe du Diable - Saint-Pierre - La Reunion » par Clémenceau Lauret (<a href="https://commons.wikimedia.org/wiki/File:Pointe_du_Diable_-_Saint-Pierre_-_La_Reunion.jpg" target="_blank" rel="noopener">Commons</a>) ; « Reunion SaintPierre PointeDuDiable » par B.navez (<a href="https://commons.wikimedia.org/wiki/File:Reunion_SaintPierre_PointeDuDiable.JPG" target="_blank" rel="noopener">Commons</a>). Images redimensionnées/recompressées.</td></tr>
+        <tr><td>Logo de la SPA du Sud</td><td><b>Tous droits réservés</b> – © SPA du Sud, utilisé avec l'accord de l'association</td></tr>
+        <tr><td>Bibliothèque cartographique Leaflet 1.9.4 (hébergée dans <code>js/vendor</code>)</td><td><b>BSD 2‑Clause</b> © Vladimir Agafonkin, CloudMade</td></tr>
         <tr><td>Chiffres du centre animalier</td><td>Données publiques CIVIS, TCO, DAAF Réunion (guide aux maires 2020), citées avec leur source</td></tr>
         <tr><td>Icônes emoji</td><td>Emoji natifs du système de l'utilisateur</td></tr>
       </tbody>
@@ -429,7 +454,7 @@
     <p>Les formulaires de ce site ne sont pas transmis à un serveur : ils préparent un email dans <i>votre</i> messagerie, que vous envoyez vous‑même à la SPA du Sud. Les données saisies servent uniquement à traiter votre demande (adoption, don, bénévolat, contact) et sont conservées par l'association le temps nécessaire. Conformément au RGPD et à la loi « Informatique et Libertés », vous disposez d'un droit d'accès, de rectification, d'effacement, d'opposition et de limitation, à exercer auprès de <a href="mailto:spa.dusud@gmail.com">spa.dusud@gmail.com</a> ; réclamation possible auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a>. Les paiements sont traités par <a href="https://www.helloasso.com" target="_blank" rel="noopener">HelloAsso</a> selon sa propre politique.</p>
 
     <h2>Cookies et traceurs</h2>
-    <p>Ce site n'utilise <b>aucun cookie</b> ni outil de mesure d'audience. Seule votre préférence de thème clair/sombre est mémorisée localement dans votre navigateur (stockage local, sans transmission). Les tuiles de carte sont chargées depuis les serveurs d'Esri (ou d'OpenStreetMap en repli) et la bibliothèque Leaflet depuis cdnjs.cloudflare.com, qui reçoivent donc votre adresse IP.</p>
+    <p>Ce site n'utilise <b>aucun cookie</b> ni outil de mesure d'audience. Seule votre préférence de thème clair/sombre est mémorisée localement dans votre navigateur (stockage local, sans transmission). Les tuiles de carte sont chargées depuis les serveurs d'Esri (ou d'OpenStreetMap en repli) qui reçoivent donc votre adresse IP. La bibliothèque Leaflet et les images sont hébergées avec le site sur GitHub Pages (GitHub reçoit les requêtes d'accès, voir sa politique de confidentialité).</p>
 
     <h2>Propriété intellectuelle</h2>
     <p>Sauf mention contraire, la reproduction des éléments « tous droits réservés » est interdite sans autorisation écrite de la SPA du Sud. Le droit à l'image des personnes et des animaux est respecté ; toute personne identifiable peut demander le retrait d'une photo.</p>
@@ -451,16 +476,21 @@
 
 <footer>
   <div class="wrap foot">
-    <div><b>🐾 SPA du Sud</b><br>199 chemin Charette · 97410 Saint-Pierre<br>02 62 25 98 17</div>
+    <div><b><i class="i" data-i="paw"></i> SPA du Sud</b><br>199 chemin Charette · 97410 Saint-Pierre<br>02 62 25 98 17</div>
     <div><a href="#adopter">Adopter</a> · <a href="#dons">Donner</a> · <a href="#benevolat">Bénévolat</a> · <a href="#contact">Contact</a> · <a href="#legal">Mentions légales</a></div>
     <div class="credit">Site conçu et réalisé par <b>MAUME Robin – Geomark SIG Solutions</b><br>
       Code <a href="https://github.com/GeomarkSIG/SPA_du_SUD" target="_blank" rel="noopener">MIT</a> · Textes CC BY‑NC‑SA 4.0 · Cartes © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · <a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a></div>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="js/data.js?v=2"></script>
-<script src="js/routes.js"></script>
-<script src="js/app.js?v=2"></script>
+<dialog id="dlg" aria-labelledby="dlg-title"><button class="dlg-x" aria-label="Fermer"><i class="i" data-i="x"></i></button><div id="dlg-body"></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+
+
+<script src="js/vendor/leaflet.js"></script>
+<script src="js/data.js?v=5"></script>
+<script src="js/icons.js?v=5"></script>
+<script src="js/routes.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
 </body>
 </html>

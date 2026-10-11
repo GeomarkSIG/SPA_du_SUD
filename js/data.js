@@ -11,7 +11,7 @@ window.SITE = {
   email: "spa.dusud@gmail.com",
   facebook: "https://www.facebook.com/Spadusud/",
   helloasso: "https://www.helloasso.com/associations/spa-du-sud-reunion",
-  coord: [-21.32027, 55.43926]
+  coord: [-21.3246, 55.4370]
 };
 
 /* Chiffres du centre animalier de Saint-Pierre (source : CIVIS, page « Le Centre Animalier ») */
@@ -77,19 +77,19 @@ window.EQUIPE = {
 
 /* Missions de bénévolat */
 window.MISSIONS = [
-  { id: "balade", ico: "🚶", titre: "Balades", duree: "1 h – 2 h", desc: "Promenez un chien du refuge, en bord de mer. Idéal pour dépenser son énergie et le socialiser.", besoin: "Très demandé" , niveau: 3 },
-  { id: "bricolage", ico: "🔨", titre: "Bricolage au refuge", duree: "½ journée", desc: "Peinture, réparation de grillages, niches, parcs de jeux, jeux d'enrichissement.", besoin: "Mains bienvenues", niveau: 2 },
-  { id: "box", ico: "🧽", titre: "Nettoyage des box", duree: "2 h", desc: "Nettoyage, désinfection, renouvellement des litières et gamelles.", besoin: "Besoin permanent", niveau: 3 },
-  { id: "toilettage", ico: "✂️", titre: "Toilettage", duree: "2 h", desc: "Brossage, bain, démêlage : un animal propre est un animal adopté plus vite.", besoin: "Quelques créneaux", niveau: 1 },
-  { id: "calin", ico: "💞", titre: "Câlinothérapie", duree: "1 h", desc: "Passez du temps avec les chats et chiens timides ou seniors : caresses, voix douce, jeux calmes.", besoin: "Besoin régulier", niveau: 2 },
-  { id: "com", ico: "📣", titre: "Présence & communication", duree: "Flexible", desc: "Photos, vidéos, réseaux sociaux, stand lors d'évènements, collecte, accueil du public.", besoin: "Compétences recherchées", niveau: 2 }
+  { id: "balade", ico: "walk", titre: "Balades", duree: "1 h – 2 h", desc: "Promenez un chien du refuge, en bord de mer. Idéal pour dépenser son énergie et le socialiser.", besoin: "Très demandé" , niveau: 3 },
+  { id: "bricolage", ico: "hammer", titre: "Bricolage au refuge", duree: "½ journée", desc: "Peinture, réparation de grillages, niches, parcs de jeux, jeux d'enrichissement.", besoin: "Mains bienvenues", niveau: 2 },
+  { id: "box", ico: "sparkles", titre: "Nettoyage des box", duree: "2 h", desc: "Nettoyage, désinfection, renouvellement des litières et gamelles.", besoin: "Besoin permanent", niveau: 3 },
+  { id: "toilettage", ico: "scissors", titre: "Toilettage", duree: "2 h", desc: "Brossage, bain, démêlage : un animal propre est un animal adopté plus vite.", besoin: "Quelques créneaux", niveau: 1 },
+  { id: "calin", ico: "hug", titre: "Câlinothérapie", duree: "1 h", desc: "Passez du temps avec les chats et chiens timides ou seniors : caresses, voix douce, jeux calmes.", besoin: "Besoin régulier", niveau: 2 },
+  { id: "com", ico: "megaphone", titre: "Présence & communication", duree: "Flexible", desc: "Photos, vidéos, réseaux sociaux, stand lors d'évènements, collecte, accueil du public.", besoin: "Compétences recherchées", niveau: 2 }
 ];
 
 /* Structures de l'île – coordonnées approximatives (géocodage OpenStreetMap), à vérifier avant déplacement */
 window.STRUCTURES = [
   { nom: "Refuge « Chance » (SPA du Sud) + Fourrière « Espoir »", type: "both", commune: "Saint-Pierre", zone: "CIVIS",
     adresse: "199 chemin Charette, 97410 Saint-Pierre", tel: "Refuge : 02 62 25 98 17 · Fourrière : 02 62 35 25 58 · Captures : 0800 501 501",
-    coord: [-21.32027, 55.43926], info: "Refuge 102 places (66 chiens, 36 chats). Fourrière 113 places (77 chiens, 36 chats), exploitée par la SEMRRE pour la CIVIS." },
+    coord: [-21.3246, 55.4370], info: "Refuge 102 places (66 chiens, 36 chats). Fourrière 113 places (77 chiens, 36 chats), exploitée par la SEMRRE pour la CIVIS." },
   { nom: "Fourrière CASUD", type: "fourriere", commune: "Le Tampon (Bérive)", zone: "CASUD",
     adresse: "Chemin de la Bergerie, Bérive, 97430 Le Tampon", tel: "02 62 27 15 17",
     coord: [-21.31014, 55.53735], info: "Fourrière intercommunale du Sud (d'après le guide préfectoral 2020, à confirmer)." },
