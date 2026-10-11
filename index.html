@@ -13,8 +13,8 @@
 <meta property="og:image" content="img/pointe-1.jpg">
 <meta property="og:locale" content="fr_FR">
 <link rel="stylesheet" href="css/vendor/leaflet.css">
-<link rel="stylesheet" href="css/style.css?v=5">
-<link rel="stylesheet" href="css/v3.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
+<link rel="stylesheet" href="css/v3.css?v=6">
 </head>
 <body>
 <a class="skip" href="#main">Aller au contenu</a>
@@ -99,7 +99,7 @@
       <div class="teaser-pic" role="img" aria-label="Le littoral de la Pointe du Diable"></div>
       <div class="teaser-txt">
         <h2><i class="i" data-i="waves"></i> Une balade jusqu'à la mer</h2>
-        <p>Le refuge est à quelques centaines de mètres du littoral. Les bénévoles promènent les chiens vers la <b>plage de la Pointe du Diable</b> (2,5 km) ou le long de la clôture de l'aéroport de Pierrefonds (1,8 km).</p>
+        <p>Le refuge est à quelques centaines de mètres du littoral. Chaque après-midi (de 14 h à 16 h 50, chaussures fermées, chien en laisse), les bénévoles promènent les chiens vers la <b>plage de la Pointe du Diable</b> (2,5 km) ou le long de la clôture de l'aéroport de Pierrefonds (1,8 km).</p>
         <a class="btn" href="#benevolat" data-go="walk"><i class="i" data-i="route"></i> Voir les itinéraires</a>
         <p class="src">Photo : B.navez, <a href="https://commons.wikimedia.org/wiki/File:Reunion_SaintPierre_PointeDuDiable.JPG" target="_blank" rel="noopener">CC BY-SA 3.0</a></p>
       </div>
@@ -273,15 +273,17 @@
 
     <h2 class="sec"><i class="i" data-i="route"></i> Balades à pied depuis le refuge</h2>
     <p>Deux itinéraires <b>le long du littoral</b>, calculés d'après les chemins OpenStreetMap. Ils ne traversent pas l'aéroport : l'un mène à la <b>plage de la Pointe du Diable</b>, l'autre <b>longe la clôture de l'aéroport de Pierrefonds</b> côté mer.</p>
+    <div class="rules" role="note"><span class="ico big"><i class="i" data-i="clock"></i></span><div><b>Les balades ont lieu de 14 h à 16 h 50.</b><br>Chaussures fermées obligatoires · chien en laisse en permanence.</div></div>
     <div class="walk">
       <div class="walk-ctl">
         <button class="route on" data-r="pointe"><span class="rt-ico"><i class="i" data-i="waves"></i></span><span><b>→ Plage de la Pointe du Diable</b><span id="r-pointe"></span></span></button>
         <button class="route" data-r="aeroport"><span class="rt-ico"><i class="i" data-i="plane"></i></span><span><b>← Clôture de l'aéroport (littoral)</b><span id="r-aeroport"></span></span></button>
         <button class="btn" id="walk-play" type="button"><i class="i" data-i="walk"></i> Simuler la balade</button>
         <ul class="plain small icons">
-          <li><i class="i" data-i="sun"></i> Sortez tôt le matin ou en fin de journée (sol chaud pour les pattes).</li>
+          <li><i class="i" data-i="clock"></i> <b>Balades uniquement de 14 h à 16 h 50</b>, retour au refuge avant la fermeture.</li>
+          <li><i class="i" data-i="shield"></i> <b>Chaussures fermées obligatoires</b> (pas de tongs ni de sandales).</li>
           <li><i class="i" data-i="drop"></i> Eau pour vous et pour le chien.</li>
-          <li><i class="i" data-i="link"></i> Laisse courte près des routes et du littoral.</li>
+          <li><i class="i" data-i="link"></i> <b>Chien toujours en laisse</b>, laisse courte près des routes et du littoral.</li>
           <li><i class="i" data-i="trash"></i> Déposez-vous les déjections.</li>
           <li><i class="i" data-i="info"></i> Falaises et houle : ne descendez pas sur les rochers avec un chien.</li>
         </ul>
@@ -304,7 +306,7 @@
         <div class="tags" id="b-missions"></div>
       </fieldset>
       <div class="row">
-        <label>Disponibilités <select name="dispo"><option>Semaine matin</option><option>Semaine après-midi</option><option>Week-end</option><option>Variable</option></select></label>
+        <label>Disponibilités (balades : 14 h – 16 h 50 uniquement) <select name="dispo"><option>Semaine matin</option><option>Semaine après-midi</option><option>Week-end</option><option>Variable</option></select></label>
         <label>Je suis majeur·e <select name="majeur"><option>Oui</option><option>Non (autorisation parentale requise)</option></select></label>
       </div>
       <label>Un mot sur vous<textarea name="msg" rows="3"></textarea></label>
@@ -488,9 +490,9 @@
 
 
 <script src="js/vendor/leaflet.js"></script>
-<script src="js/data.js?v=5"></script>
-<script src="js/icons.js?v=5"></script>
-<script src="js/routes.js?v=5"></script>
-<script src="js/app.js?v=5"></script>
+<script src="js/data.js?v=6"></script>
+<script src="js/icons.js?v=6"></script>
+<script src="js/routes.js?v=6"></script>
+<script src="js/app.js?v=6"></script>
 </body>
 </html>

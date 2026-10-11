@@ -77,7 +77,7 @@ window.EQUIPE = {
 
 /* Missions de bénévolat */
 window.MISSIONS = [
-  { id: "balade", ico: "walk", titre: "Balades", duree: "1 h – 2 h", desc: "Promenez un chien du refuge, en bord de mer. Idéal pour dépenser son énergie et le socialiser.", besoin: "Très demandé" , niveau: 3 },
+  { id: "balade", ico: "walk", titre: "Balades", duree: "14 h – 16 h 50", desc: "Promenez un chien du refuge, en bord de mer, uniquement de 14 h à 16 h 50. Chaussures fermées obligatoires, chien en laisse.", besoin: "Très demandé" , niveau: 3 },
   { id: "bricolage", ico: "hammer", titre: "Bricolage au refuge", duree: "½ journée", desc: "Peinture, réparation de grillages, niches, parcs de jeux, jeux d'enrichissement.", besoin: "Mains bienvenues", niveau: 2 },
   { id: "box", ico: "sparkles", titre: "Nettoyage des box", duree: "2 h", desc: "Nettoyage, désinfection, renouvellement des litières et gamelles.", besoin: "Besoin permanent", niveau: 3 },
   { id: "toilettage", ico: "scissors", titre: "Toilettage", duree: "2 h", desc: "Brossage, bain, démêlage : un animal propre est un animal adopté plus vite.", besoin: "Quelques créneaux", niveau: 1 },
