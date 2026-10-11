@@ -337,13 +337,12 @@
     });
     return esri;
   };
-  const pinIcon = (t, glyph) => L.divIcon({ className: "", html: `<span class="pin ${t}"><span>${ic(glyph || "paw")}</span></span>`, iconSize: [34, 34], iconAnchor: [17, 34], popupAnchor: [0, -30] });
+  const pinIcon = (t, glyph, s = 34) => L.divIcon({ className: "", html: `<span class="pin ${t}" style="width:${s}px;height:${s}px;font-size:${Math.round(s * .5)}px"><span>${ic(glyph || "paw")}</span></span>`, iconSize: [s, s], iconAnchor: [s / 2, s], popupAnchor: [0, -s + 4] });
   const popup = (title, rows, extra) => `<div class="pop"><h4>${title}</h4>${rows.map(r => `<p>${ic(r[0])}<span>${r[1]}</span></p>`).join("")}${extra || ""}</div>`;
 
   function initWalk() {
-    const m = L.map("map-walk", { scrollWheelZoom: false }).setView(SITE.coord, 14); base().addTo(m);
-    m.on("focus", () => m.scrollWheelZoom.enable()); m.on("blur", () => m.scrollWheelZoom.disable());
-    L.marker(SITE.coord, { icon: pinIcon("refuge", "shelter") }).addTo(m).bindPopup(popup("Refuge SPA du Sud", [["pin", "Départ des balades (position approximative)"], ["phone", SITE.tel]]));
+    const m = L.map("map-walk").setView(SITE.coord, 14); base().addTo(m);
+    L.marker(SITE.coord, { icon: pinIcon("refuge", "shelter") }).addTo(m).bindPopup(popup("Refuge SPA du Sud", [["pin", "Départ des balades : sentier au sud, à l'arrière du bâtiment"], ["route", "Plus Code MCFQ+HF"], ["phone", SITE.tel]]));
     const spec = {
       pointe: { color: "#e4572e", end: "Plage de la Pointe du Diable", glyph: "waves", info: "Sentier littoral jusqu'à l'escalier de la plage" },
       aeroport: { color: "#0f6e7a", end: "Enceinte sud de l'aéroport (chemin du littoral)", glyph: "plane", info: "Le long de l'enceinte, côté sud – on n'entre jamais dans l'aéroport" }
@@ -390,24 +389,25 @@
     if (typeof L === "undefined") { mapErr(name === "walk" ? "#map-walk" : name === "island" ? "#map-island" : "#map-contact"); return; }
     if (maps[name]) { setTimeout(() => maps[name].invalidateSize(), 50); return; }
     if (name === "contact") {
-      const m = L.map("map-contact", { scrollWheelZoom: false }).setView(SITE.coord, 15); base().addTo(m);
-      m.on("focus", () => m.scrollWheelZoom.enable()); m.on("blur", () => m.scrollWheelZoom.disable());
-      L.marker(SITE.coord, { icon: pinIcon("refuge", "shelter") }).addTo(m).bindPopup(popup("SPA du Sud", [["pin", esc(SITE.adresse)], ["phone", esc(SITE.tel)], ["info", "Position approximative"]])).openPopup();
+      const m = L.map("map-contact").setView(SITE.coord, 15); base().addTo(m);
+      L.marker(SITE.coord, { icon: pinIcon("refuge", "shelter") }).addTo(m).bindPopup(popup("SPA du Sud", [["pin", esc(SITE.adresse)], ["phone", esc(SITE.tel)], ["route", "Plus Code MCFQ+HF"]])).openPopup();
       maps.contact = m;
     }
     if (name === "walk") initWalk();
     if (name === "island") {
-      const m = L.map("map-island", { scrollWheelZoom: false }).setView([-21.12, 55.53], 10); base().addTo(m);
-      m.on("focus", () => m.scrollWheelZoom.enable()); m.on("blur", () => m.scrollWheelZoom.disable());
+      const m = L.map("map-island").setView([-21.12, 55.53], 10); base().addTo(m);
       const lbl = { refuge: "Refuge", fourriere: "Fourrière" }, gl = { refuge: "shelter", fourriere: "cage" };
-      const pts = [];
+      const pts = [], marks = [], size = () => (m.getZoom() <= 10 ? 20 : m.getZoom() <= 12 ? 26 : 34);
       STRUCTURES.forEach(s => {
         pts.push(s.coord);
-        L.marker(s.coord, { icon: pinIcon(s.type, gl[s.type]), title: s.nom }).addTo(m).bindPopup(
+        const mk = L.marker(s.coord, { icon: pinIcon(s.type, gl[s.type], size()), title: s.nom }).addTo(m);
+        marks.push([mk, s]);
+        mk.bindPopup(
           popup(esc(s.nom), [["info", `<i>${lbl[s.type]} · ${esc(s.zone)}</i>`], ["pin", esc(s.adresse)], ["phone", esc(s.tel)], ["route", `${s.coord[0].toFixed(5)}, ${s.coord[1].toFixed(5)}${s.approx ? " (approximatif)" : ""}`]],
             `<p class="small">${esc(s.info)}</p><a class="pop-btn" href="https://www.openstreetmap.org/directions?to=${s.coord[0]}%2C${s.coord[1]}" target="_blank" rel="noopener">Itinéraire ↗</a>`), { maxWidth: 320 });
       });
       m.fitBounds(L.latLngBounds(pts).pad(.12));
+      m.on("zoomend", () => marks.forEach(([mk, s]) => mk.setIcon(pinIcon(s.type, gl[s.type], size()))));
       maps.island = m;
     }
   }

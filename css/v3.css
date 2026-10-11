@@ -144,7 +144,7 @@ dialog h2{margin-top:0;display:flex;gap:10px;align-items:center;padding-right:44
 @keyframes march{to{stroke-dashoffset:-26}}
 .walker{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#fff;color:var(--coral);border:3px solid var(--coral);box-shadow:0 3px 10px rgba(0,0,0,.4);font-size:1.2rem;animation:float 1s ease-in-out infinite}
 .pin{display:grid;place-items:center;width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 3px 8px #0007;color:#fff;transition:transform .2s}
-.pin>span{transform:rotate(45deg);display:grid;place-items:center;font-size:1rem}
+.pin>span{transform:rotate(45deg);display:grid;place-items:center;font-size:inherit}
 .leaflet-marker-icon:hover .pin{transform:rotate(-45deg) scale(1.2)}
 .pin.both{background:#e4572e}.pin.refuge{background:#2e8b57}.pin.fourriere{background:#0f6e7a}
 .pop h4{margin:0 0 6px;font-size:1rem;color:#0f6e7a}
@@ -161,3 +161,10 @@ dialog h2{margin-top:0;display:flex;gap:10px;align-items:center;padding-right:44
 .rules .ico.big{width:48px;height:48px;font-size:1.5rem}
 .pin.dest{background:#f6b73c;color:#2b2100;border-radius:50%;transform:none}.pin.dest>span{transform:none}
 .leaflet-marker-icon:hover .pin.dest{transform:scale(1.2)}
+
+/* liste de conseils sous « Simuler la balade » : icône + texte alignés, espacement régulier */
+.walk-ctl .icons{margin:18px 0 0;padding:0;display:grid;gap:12px}
+.walk-ctl .icons li{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;margin:0;line-height:1.45}
+.walk-ctl .icons li .i{margin:2px 0 0;width:20px;height:20px}
+.walk-ctl .icons li span b{font-weight:700}
+.walk-ctl .route{margin-bottom:10px}

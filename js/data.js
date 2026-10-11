@@ -11,7 +11,7 @@ window.SITE = {
   email: "spa.dusud@gmail.com",
   facebook: "https://www.facebook.com/Spadusud/",
   helloasso: "https://www.helloasso.com/associations/spa-du-sud-reunion",
-  coord: [-21.3246, 55.4370]
+  coord: [-21.32606, 55.43869]
 };
 
 /* Chiffres du centre animalier de Saint-Pierre (source : CIVIS, page « Le Centre Animalier ») */
@@ -89,10 +89,10 @@ window.MISSIONS = [
 window.STRUCTURES = [
   { nom: "Refuge « Chance » (SPA du Sud)", type: "refuge", commune: "Saint-Pierre", zone: "CIVIS",
     adresse: "199 chemin Charette, 97410 Saint-Pierre", tel: "02 62 25 98 17",
-    coord: [-21.3246, 55.4368], info: "102 places (66 chiens, 36 chats) : soins, stérilisation, toilettage, adoption. Géré par la SPA du Sud." },
+    coord: [-21.32606, 55.43869], info: "Plus Code MCFQ+HF. 102 places (66 chiens, 36 chats) : soins, stérilisation, toilettage, adoption. Géré par la SPA du Sud." },
   { nom: "Fourrière « Espoir » (CIVIS)", type: "fourriere", commune: "Saint-Pierre", zone: "CIVIS",
     adresse: "199 chemin Charette, 97410 Saint-Pierre", tel: "02 62 35 25 58 · Captures : 0800 501 501",
-    coord: [-21.3248, 55.4373], info: "113 places (77 chiens, 36 chats), exploitée par la SEMRRE pour la CIVIS. Même site que le refuge « Chance »." },
+    coord: [-21.32578, 55.43896], info: "113 places (77 chiens, 36 chats), exploitée par la SEMRRE pour la CIVIS. Même site que le refuge « Chance »." },
   { nom: "Fourrière CASUD", type: "fourriere", commune: "Le Tampon (Bérive)", zone: "CASUD",
     adresse: "Chemin de la Bergerie, Bérive, 97430 Le Tampon", tel: "02 62 27 15 17",
     coord: [-21.31014, 55.53735], info: "Fourrière intercommunale du Sud (d'après le guide préfectoral 2020, à confirmer)." },
