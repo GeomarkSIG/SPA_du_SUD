@@ -107,7 +107,7 @@
   const picOf = a => a.photo ? `<img src="${esc(a.photo)}" alt="${esc(a.nom)}" loading="lazy">` : avatar(a);
   function animalCard(a, score) {
     return `<article class="animal reveal" data-open="${esc(a.id)}" tabindex="0" role="button" aria-label="Voir le portrait de ${esc(a.nom)}">
-      <div class="pic">${picOf(a)}<span class="badge">${ic(a.espece === "chien" ? "dog" : "cat")} ${a.sexe === "M" ? "Mâle" : "Femelle"}</span>${score != null ? `<span class="match">${score}% compatible</span>` : ""}
+      <div class="pic">${picOf(a)}<span class="badge">${a.sexe === "M" ? "Mâle" : "Femelle"}</span>${score != null ? `<span class="match">${score}% compatible</span>` : ""}
       <button class="favb ${favs.has(a.id) ? "on" : ""}" data-fav="${esc(a.id)}" aria-pressed="${favs.has(a.id)}" aria-label="Ajouter ${esc(a.nom)} aux favoris">${ic("heart")}</button></div>
       <div class="body"><h3>${esc(a.nom)}</h3>
       <div class="meta">${esc(a.age)} · ${taille[a.taille]}</div>
@@ -119,13 +119,13 @@
   function animalDialog(a) {
     openDlg(`<div class="dlg-animal"><div class="pic">${picOf(a)}</div><div>
       <h2 id="dlg-title">${esc(a.nom)}</h2>
-      <p class="meta">${ic(a.espece === "chien" ? "dog" : "cat")} ${a.espece === "chien" ? "Chien" : "Chat"} · ${a.sexe === "M" ? "Mâle" : "Femelle"} · ${esc(a.age)} · ${taille[a.taille]}</p>
+      <p class="meta">${a.espece === "chien" ? "Chien" : "Chat"} · ${a.sexe === "M" ? "Mâle" : "Femelle"} · ${esc(a.age)} · ${taille[a.taille]}</p>
       <div class="chips">${a.traits.map(t => `<span>${esc(t)}</span>`).join("")}</div>
       <p>${esc(a.histoire)}</p>
       <ul class="facts">
         <li>${ic("energy")} Énergie ${energyBar(a.energie)}</li>
         <li>${ic("child")} ${a.enfants ? "S'entend avec les enfants" : "Mieux sans enfants"}</li>
-        <li>${ic("cat")} ${a.chats ? "S'entend avec les chats" : "Mieux sans autre chat/animal"}</li>
+        <li>${ic("check")} ${a.chats ? "S'entend avec les chats" : "Mieux sans autre chat/animal"}</li>
       </ul>
       <div class="cta"><a class="btn" href="#adopter" data-adopt="${esc(a.id)}" data-close>${ic("home")} Je veux l'adopter</a>
       <button class="btn ghost" data-fav="${esc(a.id)}" type="button">${ic("heart")} Favori</button>
@@ -355,7 +355,7 @@
   function initWalk() {
     const m = L.map("map-walk", { scrollWheelZoom: false }).setView(SITE.coord, 14); base().addTo(m);
     m.on("focus", () => m.scrollWheelZoom.enable()); m.on("blur", () => m.scrollWheelZoom.disable());
-    L.marker(SITE.coord, { icon: pinIcon("both", "paw") }).addTo(m).bindPopup(popup("Refuge SPA du Sud", [["pin", "Départ des balades (position approximative)"], ["phone", SITE.tel]]));
+    L.marker(SITE.coord, { icon: pinIcon("refuge", "shelter") }).addTo(m).bindPopup(popup("Refuge SPA du Sud", [["pin", "Départ des balades (position approximative)"], ["phone", SITE.tel]]));
     const spec = {
       pointe: { color: "#e4572e", end: "Plage de la Pointe du Diable", glyph: "waves", info: "Sentier littoral jusqu'à l'escalier de la plage" },
       aeroport: { color: "#0f6e7a", end: "Aéroport de Pierrefonds (clôture littorale)", glyph: "plane", info: "Le long de la clôture, côté mer – on n'entre pas dans l'aéroport" }
@@ -366,7 +366,7 @@
       const r = ROUTES[k], s = spec[k];
       const line = L.polyline(r.pts, { color: s.color, weight: 6, opacity: .95, lineCap: "round", className: "route-line" });
       const casing = L.polyline(r.pts, { color: "#fff", weight: 10, opacity: .9 });
-      const end = L.marker(r.pts[r.pts.length - 1], { icon: pinIcon(k === "pointe" ? "refuge" : "fourriere", s.glyph) })
+      const end = L.marker(r.pts[r.pts.length - 1], { icon: pinIcon("dest", s.glyph) })
         .bindPopup(popup(s.end, [["route", `${r.km} km · ≈ ${r.min} min à pied`], ["info", s.info]]));
       layers[k] = L.layerGroup([casing, line, end]);
     });
@@ -404,14 +404,14 @@
     if (name === "contact") {
       const m = L.map("map-contact", { scrollWheelZoom: false }).setView(SITE.coord, 15); base().addTo(m);
       m.on("focus", () => m.scrollWheelZoom.enable()); m.on("blur", () => m.scrollWheelZoom.disable());
-      L.marker(SITE.coord, { icon: pinIcon("both", "paw") }).addTo(m).bindPopup(popup("SPA du Sud", [["pin", esc(SITE.adresse)], ["phone", esc(SITE.tel)], ["info", "Position approximative"]])).openPopup();
+      L.marker(SITE.coord, { icon: pinIcon("refuge", "shelter") }).addTo(m).bindPopup(popup("SPA du Sud", [["pin", esc(SITE.adresse)], ["phone", esc(SITE.tel)], ["info", "Position approximative"]])).openPopup();
       maps.contact = m;
     }
     if (name === "walk") initWalk();
     if (name === "island") {
       const m = L.map("map-island", { scrollWheelZoom: false }).setView([-21.12, 55.53], 10); base().addTo(m);
       m.on("focus", () => m.scrollWheelZoom.enable()); m.on("blur", () => m.scrollWheelZoom.disable());
-      const lbl = { both: "Refuge + fourrière", refuge: "Refuge", fourriere: "Fourrière" }, gl = { both: "paw", refuge: "shelter", fourriere: "cage" };
+      const lbl = { refuge: "Refuge", fourriere: "Fourrière" }, gl = { refuge: "shelter", fourriere: "cage" };
       const pts = [];
       STRUCTURES.forEach(s => {
         pts.push(s.coord);

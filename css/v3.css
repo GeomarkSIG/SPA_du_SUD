@@ -159,3 +159,5 @@ dialog h2{margin-top:0;display:flex;gap:10px;align-items:center;padding-right:44
 
 .rules{display:flex;gap:14px;align-items:center;background:color-mix(in srgb,var(--coral) 12%,var(--bg2));border:1px solid var(--coral);border-radius:var(--r);padding:12px 16px;margin:14px 0}
 .rules .ico.big{width:48px;height:48px;font-size:1.5rem}
+.pin.dest{background:#f6b73c;color:#2b2100;border-radius:50%;transform:none}.pin.dest>span{transform:none}
+.leaflet-marker-icon:hover .pin.dest{transform:scale(1.2)}

@@ -87,9 +87,12 @@ window.MISSIONS = [
 
 /* Structures de l'île – coordonnées approximatives (géocodage OpenStreetMap), à vérifier avant déplacement */
 window.STRUCTURES = [
-  { nom: "Refuge « Chance » (SPA du Sud) + Fourrière « Espoir »", type: "both", commune: "Saint-Pierre", zone: "CIVIS",
-    adresse: "199 chemin Charette, 97410 Saint-Pierre", tel: "Refuge : 02 62 25 98 17 · Fourrière : 02 62 35 25 58 · Captures : 0800 501 501",
-    coord: [-21.3246, 55.4370], info: "Refuge 102 places (66 chiens, 36 chats). Fourrière 113 places (77 chiens, 36 chats), exploitée par la SEMRRE pour la CIVIS." },
+  { nom: "Refuge « Chance » (SPA du Sud)", type: "refuge", commune: "Saint-Pierre", zone: "CIVIS",
+    adresse: "199 chemin Charette, 97410 Saint-Pierre", tel: "02 62 25 98 17",
+    coord: [-21.3246, 55.4368], info: "102 places (66 chiens, 36 chats) : soins, stérilisation, toilettage, adoption. Géré par la SPA du Sud." },
+  { nom: "Fourrière « Espoir » (CIVIS)", type: "fourriere", commune: "Saint-Pierre", zone: "CIVIS",
+    adresse: "199 chemin Charette, 97410 Saint-Pierre", tel: "02 62 35 25 58 · Captures : 0800 501 501",
+    coord: [-21.3248, 55.4373], info: "113 places (77 chiens, 36 chats), exploitée par la SEMRRE pour la CIVIS. Même site que le refuge « Chance »." },
   { nom: "Fourrière CASUD", type: "fourriere", commune: "Le Tampon (Bérive)", zone: "CASUD",
     adresse: "Chemin de la Bergerie, Bérive, 97430 Le Tampon", tel: "02 62 27 15 17",
     coord: [-21.31014, 55.53735], info: "Fourrière intercommunale du Sud (d'après le guide préfectoral 2020, à confirmer)." },
@@ -105,7 +108,7 @@ window.STRUCTURES = [
   { nom: "Refuge SPA de la Réunion", type: "refuge", commune: "Sainte-Marie", zone: "CINOR",
     adresse: "112 rue André Lardy, 97438 Sainte-Marie", tel: "02 62 28 98 84 · 06 92 30 86 88",
     coord: [-20.90021, 55.53341], info: "Refuge du Grand Prado, environ 32 chiens (guide préfectoral 2020)." },
-  { nom: "Refuge Ti Loup", type: "refuge", commune: "Le Tampon", zone: "CASUD",
-    adresse: "Adresse exacte à confirmer – Le Tampon", tel: "À compléter",
-    coord: [-21.2778, 55.5164], approx: true, info: "Position provisoire au centre du Tampon : l'adresse du refuge n'a pas été trouvée dans les sources publiques. À remplacer par les vraies coordonnées." }
+  { nom: "Refuge Ti Lou", type: "refuge", commune: "Le Tampon (Bérive)", zone: "CASUD",
+    adresse: "35 chemin de la Bergerie, 97430 Le Tampon", tel: "09 76 31 68 99 · contact@tilou.re",
+    coord: [-21.3105, 55.5378], approx: true, info: "Association Ti Lou, refuge municipal du Tampon : jusqu'à 49 chiens et 30 chats, récupérés après la fourrière. Ouvert mardi–vendredi 14 h–16 h 30, week-end 10 h–16 h 30, fermé le lundi. Animaux adoptés identifiés, vaccinés et stérilisés. Site : tilou.re. Position approximative (lieu-dit Bérive)." }
 ];
