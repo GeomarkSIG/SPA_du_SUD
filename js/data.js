@@ -77,7 +77,7 @@ window.EQUIPE = {
 
 /* Missions de bénévolat */
 window.MISSIONS = [
-  { id: "balade", ico: "walk", titre: "Balades", duree: "14 h – 16 h 50", desc: "Promenez un chien du refuge, en bord de mer, uniquement de 14 h à 16 h 50. Chaussures fermées obligatoires, chien en laisse.", besoin: "Très demandé" , niveau: 3 },
+  { id: "balade", ico: "walk", titre: "Balades", duree: "Tous les jours, 14 h – 16 h 50", desc: "Promenez un chien du refuge, en bord de mer, tous les jours de 14 h à 16 h 50. Chaussures fermées obligatoires, chien en laisse.", besoin: "Très demandé" , niveau: 3 },
   { id: "bricolage", ico: "hammer", titre: "Bricolage au refuge", duree: "½ journée", desc: "Peinture, réparation de grillages, niches, parcs de jeux, jeux d'enrichissement.", besoin: "Mains bienvenues", niveau: 2 },
   { id: "box", ico: "sparkles", titre: "Nettoyage des box", duree: "2 h", desc: "Nettoyage, désinfection, renouvellement des litières et gamelles.", besoin: "Besoin permanent", niveau: 3 },
   { id: "toilettage", ico: "scissors", titre: "Toilettage", duree: "2 h", desc: "Brossage, bain, démêlage : un animal propre est un animal adopté plus vite.", besoin: "Quelques créneaux", niveau: 1 },
@@ -104,5 +104,8 @@ window.STRUCTURES = [
     coord: [-20.90169, 55.52695], info: "Fourrière du Nord. Gestionnaire à vérifier (marché renouvelé depuis 2021)." },
   { nom: "Refuge SPA de la Réunion", type: "refuge", commune: "Sainte-Marie", zone: "CINOR",
     adresse: "112 rue André Lardy, 97438 Sainte-Marie", tel: "02 62 28 98 84 · 06 92 30 86 88",
-    coord: [-20.90021, 55.53341], info: "Refuge du Grand Prado, environ 32 chiens (guide préfectoral 2020)." }
+    coord: [-20.90021, 55.53341], info: "Refuge du Grand Prado, environ 32 chiens (guide préfectoral 2020)." },
+  { nom: "Refuge Ti Loup", type: "refuge", commune: "Le Tampon", zone: "CASUD",
+    adresse: "Adresse exacte à confirmer – Le Tampon", tel: "À compléter",
+    coord: [-21.2778, 55.5164], approx: true, info: "Position provisoire au centre du Tampon : l'adresse du refuge n'a pas été trouvée dans les sources publiques. À remplacer par les vraies coordonnées." }
 ];

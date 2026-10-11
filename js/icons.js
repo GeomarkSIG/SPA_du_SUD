@@ -44,6 +44,8 @@
     star: '<path d="m12 3 2.700 5.600 6.100.9-4.400 4.300 1 6.100L12 17l-5.400 2.900 1-6.100L3.200 9.500l6.100-.9z"/>',
     ruler: '<path d="m3 17 14-14 4 4L7 21z"/><path d="m7 13 2 2M10 10l2 2M13 7l2 2"/>',
     energy: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+    shelter: '<path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M12 17.500s-3-1.800-3-4a1.700 1.700 0 0 1 3-1 1.700 1.700 0 0 1 3 1c0 2.200-3 4-3 4z"/>',
+    cage: '<rect x="3" y="5" width="18" height="15" rx="2"/><path d="M3 9h18M8 9v11M12 9v11M16 9v11M7 5V3h10v2"/>',
     child: '<circle cx="12" cy="6" r="3"/><path d="M6 21v-6a6 6 0 0 1 12 0v6M9 21v-4M15 21v-4"/>'
   };
   window.ICON_NAMES = Object.keys(P);

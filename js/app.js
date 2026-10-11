@@ -411,12 +411,12 @@
     if (name === "island") {
       const m = L.map("map-island", { scrollWheelZoom: false }).setView([-21.12, 55.53], 10); base().addTo(m);
       m.on("focus", () => m.scrollWheelZoom.enable()); m.on("blur", () => m.scrollWheelZoom.disable());
-      const lbl = { both: "Refuge + fourrière", refuge: "Refuge", fourriere: "Fourrière" }, gl = { both: "paw", refuge: "home", fourriere: "alert" };
+      const lbl = { both: "Refuge + fourrière", refuge: "Refuge", fourriere: "Fourrière" }, gl = { both: "paw", refuge: "shelter", fourriere: "cage" };
       const pts = [];
       STRUCTURES.forEach(s => {
         pts.push(s.coord);
         L.marker(s.coord, { icon: pinIcon(s.type, gl[s.type]), title: s.nom }).addTo(m).bindPopup(
-          popup(esc(s.nom), [["info", `<i>${lbl[s.type]} · ${esc(s.zone)}</i>`], ["pin", esc(s.adresse)], ["phone", esc(s.tel)], ["route", `${s.coord[0].toFixed(5)}, ${s.coord[1].toFixed(5)}`]],
+          popup(esc(s.nom), [["info", `<i>${lbl[s.type]} · ${esc(s.zone)}</i>`], ["pin", esc(s.adresse)], ["phone", esc(s.tel)], ["route", `${s.coord[0].toFixed(5)}, ${s.coord[1].toFixed(5)}${s.approx ? " (approximatif)" : ""}`]],
             `<p class="small">${esc(s.info)}</p><a class="pop-btn" href="https://www.openstreetmap.org/directions?to=${s.coord[0]}%2C${s.coord[1]}" target="_blank" rel="noopener">Itinéraire ↗</a>`), { maxWidth: 320 });
       });
       m.fitBounds(L.latLngBounds(pts).pad(.12));
