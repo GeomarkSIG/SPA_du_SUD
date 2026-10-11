@@ -318,18 +318,6 @@
   });
   drawYear(FLUX.length - 1);
 
-  const sim = $("#sim");
-  function drawSim() {
-    const free = +sim.value, occ = 102 - free, pct = occ / 102 * 100;
-    $("#sim-val").textContent = free;
-    const bar = $("#sim-bar"); bar.style.width = pct + "%";
-    bar.style.background = pct < 70 ? "#2e8b57" : pct < 92 ? "#f6b73c" : "#c0392b";
-    $("#sim-txt").textContent = free === 0 ? "Refuge plein : plus aucun transfert possible. Les animaux de la fourrière n'ont plus d'issue vivante une fois le délai légal écoulé, sauf adoption ou famille d'accueil immédiate."
-      : free < 10 ? "Presque complet : seuls quelques animaux peuvent sortir de la fourrière. Chaque adoption libère immédiatement une place."
-      : free < 40 ? "Des places existent, mais les entrées en fourrière (≈ 100 par mois) dépassent vite la capacité si les adoptions ralentissent."
-      : "Le refuge peut accueillir plusieurs animaux de la fourrière cette semaine.";
-  }
-  sim.addEventListener("input", drawSim); drawSim();
   $$("#flow .node").forEach(n => n.setAttribute("tabindex", "0"));
 
   /* ---------- cartes Leaflet ---------- */
@@ -358,7 +346,7 @@
     L.marker(SITE.coord, { icon: pinIcon("refuge", "shelter") }).addTo(m).bindPopup(popup("Refuge SPA du Sud", [["pin", "Départ des balades (position approximative)"], ["phone", SITE.tel]]));
     const spec = {
       pointe: { color: "#e4572e", end: "Plage de la Pointe du Diable", glyph: "waves", info: "Sentier littoral jusqu'à l'escalier de la plage" },
-      aeroport: { color: "#0f6e7a", end: "Aéroport de Pierrefonds (clôture littorale)", glyph: "plane", info: "Le long de la clôture, côté mer – on n'entre pas dans l'aéroport" }
+      aeroport: { color: "#0f6e7a", end: "Enceinte sud de l'aéroport (chemin du littoral)", glyph: "plane", info: "Le long de l'enceinte, côté sud – on n'entre jamais dans l'aéroport" }
     };
     const layers = {}; let cur = "pointe", walker = null, anim = null;
     const dist = (a, b) => m.distance(a, b);
