@@ -168,3 +168,4 @@ dialog h2{margin-top:0;display:flex;gap:10px;align-items:center;padding-right:44
 .walk-ctl .icons li .i{margin:2px 0 0;width:20px;height:20px}
 .walk-ctl .icons li span b{font-weight:700}
 .walk-ctl .route{margin-bottom:10px}
+.walk{align-items:start}.map-wrap{align-self:start}
